@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Información SDVR</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="/public/CSS/estiloVotaciones.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/e326503e1d.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body class="d-flex h-100 text-center text-bg-light">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <ul class="nav nav-pills justify-content-center">
+          <li class="nav-item">
+              <a class="nav-link" href="/users/index">Inicio</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/users/login">Votar</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Información</a>
+          </li>
+      </ul>
+  </header>
+
+
+    <div class="table justify-content-center">
+      <p style="color: #eec428;">Abajo se enlistan las elecciones disponibles:</p>
+      <div id="tablas" class="table">
+      </div>
+    </div>
+
+
+    <footer class="mt-auto text-white-50">
+      <div class="container pt-4">
+        <section class="mb-4">
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.facebook.com/ieepcnlmx"
+            target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://twitter.com/ieepcnlmx" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.instagram.com/ieepcnlmx/"
+            target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <p style="color: black">Universidad Anáhuac Querétaro </p>
+    </footer>
+  </div>
+</body>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+  const url= 'http://localhost:4000';
+
+  var table= document.createElement('table');
+
+  const getElec= async()=>{
+    const { data } = await axios.get(url + '/elecciones');
+    var tr= document.createElement('tr');
+    var th= document.createElement('th');
+    var text= document.createTextNode('Elección');
+    th.appendChild(text);
+    tr.appendChild(th);
+    var th2= document.createElement('th');
+    var text2= document.createTextNode('Fecha');
+    th2.appendChild(text2);
+    tr.appendChild(th2);
+    tablas.appendChild(tr);
+
+    data.forEach(function(item) {
+      
+      var tr= document.createElement('tr');
+      var td1= document.createElement('td');
+      var td2= document.createElement('td');
+      var td3= document.createElement('td');
+      var btn= document.createElement('button');
+      var text1= document.createTextNode(item.eleccion_nombre);
+      var text2= document.createTextNode(item.eleccion_fecha);
+
+      td1.appendChild(text1);
+      td2.appendChild(text2);
+      td3.appendChild(btn);
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      tr.appendChild(td3);
+      tablas.appendChild(tr);
+    });
+  }
+  getElec()
+
+</script>
+
+
+</html>

@@ -1,0 +1,18 @@
+.cover-container {
+    max-width: 42em;
+}
+
+.nav-pills a {
+    color: black;
+}
+
+.nav-pills :hover {
+    color: white;
+    background-color: red;
+    border-radius: 10px;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #eec428;
+    color: white;
+}

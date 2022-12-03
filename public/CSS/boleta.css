@@ -1,0 +1,54 @@
+        h1{
+            text-align: center;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .center{  
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            vertical-align: middle;
+            border: 3px outset black;
+            margin-left: 20px;
+            margin-top: 20px;
+            width: 400px;
+            height: 100px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .buttonConf{
+            display: flex;
+            font-size: 20px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .checkbox1{
+            width: 20px; 
+            height: 20px;
+            margin-left: 20px;
+        }
+        .logo{
+            width: 90px; 
+            height: 90px;
+            margin-left: 10px;
+        }
+        .text{
+            margin-left: 20px;
+        }
+        .independiente{
+            font-size: 10px;
+        }
+
+        .btn-secondary a{
+            background-color: gray;
+            color: white;
+          }
+          
+          .btn-secondary:hover{
+            background-color: #eec428;
+            color: black;
+            border-color: white;
+          }

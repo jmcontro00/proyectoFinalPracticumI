@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Votación SDVR</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="/public/CSS/boleta.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e326503e1d.js" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <div>
+        <h1 style="size: 20px; color:#eec428 ;">
+            Presidencia Municipal
+        </h1>
+    </div>
+    <div class="justify-content-center radioCat">
+        <label style="position: relative;">
+            <img src="https://www.ceenl.mx/imagenes/partidos/2022/pan.png" class="radioCatImg" width="100">
+            <input class="radio1" type="radio" name="candidatos" value="pan" id="pan"> Jose Pablo Medina
+        </label><br />
+        <label style="position: relative;">
+            <img src="https://www.ceenl.mx/imagenes/partidos/2022/pri.png" class="radioCatImg" width="100">
+            <input class="radio1" type="radio" name="candidatos" value="pri" id="pri"> Ramiro López
+            
+        </label><br />
+        <label style="position: relative;">
+            <img src="https://www.ceenl.mx/imagenes/partidos/2022/prd.png" class="radioCatImg" width="100">
+            <input class="radio1" type="radio" name="candidatos" value="prd" id="prd"> Juan Carlos Prieto
+        </label><br />
+        <label style="position: relative;">
+            <img src="https://www.ceenl.mx/imagenes/partidos/2022/pvem.png" class="radioCatImg" width="100">
+            <input class="radio1" type="radio" name="candidatos" value="verde" id="verde"> Salvador Igliesas
+        </label><br />
+        <label style="position: relative;">
+            <img src="https://www.ceenl.mx/imagenes/partidos/2022/pt.png" class="radioCatImg" width="100">
+            <input class="radio1" type="radio" name="candidatos" value="pt" id="pt"> Jose Pablo Medina
+        </label><br />
+        <label style="position: relative;">
+            <img src="https://www.ceenl.mx/imagenes/partidos/2022/mc.png" class="radioCatImg" width="100">
+            <input class="radio1" type="radio" name="candidatos" value="mc" id="mc"> Ana Contró
+        </label><br />
+        <label style="position: relative;">
+            <img src="https://www.ceenl.mx/imagenes/partidos/2022/mor.png" class="radioCatImg" width="100">
+            <input class="radio1" type="radio" name="candidatos" value="morena" id="morena"> Luisa Pérez
+        </label><br />
+        <label style="position: relative;">
+            <input class="radio1" type="radio" name="candidatos" value="otro" id="otro">
+            <input type="text" id="nombre" placeholder="Otro" maxlength="30" requiered name="nombre">
+        </label><br />
+        <label style="position: relative;">
+            <img src="https://thewebtime.files.wordpress.com/2015/03/anular-el-voto.jpg" class="radioCatImg"
+                width="100">
+            <input class="radio1" type="radio" name="candidatos" value="nulo" id="nulo"> Anular voto
+        </label><br />
+    </div>
+    <div class="mt-1">
+        <p class="lead">
+            <a href="/users/boletagob" class="btn btn-lg btn-secondary fw-bold" onclick="postVote()"
+                value="Enviar">Registrar voto</a>
+        </p>
+    </div>
+</body>
+
+</html>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    const baseurl = 'http://localhost:4000';
+
+    const postVote = async () => {
+        alert("Voto registrado!")
+        const res = await fetch(baseurl + '/boleta', {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify({
+                nombreCandidato: document.querySelector('.radio1:checked').value,
+                puestoId: 1,
+                eleccion_id: 1,
+            })
+        })
+    }
+</script>

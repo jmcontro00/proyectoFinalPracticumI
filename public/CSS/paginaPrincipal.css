@@ -1,0 +1,26 @@
+.btn-secondary a{
+    background-color: gray;
+    color: white;
+  }
+  
+  .btn-secondary:hover{
+    background-color: #eec428;
+    color: black;
+    border-color: white;
+  }
+  
+  .cover-container {
+    max-width: 42em;
+  }
+  
+  .nav-pills a{
+      color: black;
+  }
+  
+  .nav-pills :hover{
+      color: #eec428;
+  }
+  .nav-pills .nav-link.active { 
+      background-color: #eec428;
+      color: white;
+  }
